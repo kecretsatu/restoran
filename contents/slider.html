@@ -1,0 +1,29 @@
+
+<?php 
+	$banner = mysqli_query($con, "select * from widget where tipe = 'banner' limit 0, 2");
+	
+?>
+<div class="slider banner container">
+	<?php while($row = mysqli_fetch_array($banner)){ ?>
+		<div style="background-image:url(<?php echo $BASE; ?>/images/banner/<?php echo $row["image_url"] ;?>)" ><div><?php echo $row["content"] ;?></div></div>
+	<?php } ?>
+	<div class="banner-gallery" align="right">
+		<div>
+	<?php mysqli_data_seek($banner, 0); while($row = mysqli_fetch_array($banner)){ ?>
+			<div style="background-image:url(<?php echo $BASE; ?>/images/banner/small/<?php echo $row["image_url"] ;?>)" ></div>
+	<?php } ?>
+		</div>
+	</div>
+</div>
+
+
+<script>
+$(document).ready(function(e){
+	initSmSlider('.banner', {
+		mode: 'fade',
+		interval: 3000,
+		speed: 1000,
+		start: 100 
+	});
+});
+</script>

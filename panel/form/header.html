@@ -1,0 +1,68 @@
+
+<div class="header navbar navbar-default navbar-static-top navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+			<button class="navbar-toggle btn navbar-btn pull-left" data-toggle="collapse" data-target=".menu" style="margin-left:10px; margin-right:-10px;">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<button class="navbar-toggle btn navbar-btn" data-toggle="collapse" data-target="#category">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!-- END RESPONSIVE MENU TOGGLER -->
+			<!-- BEGIN LOGO (you can use logo image instead of text)-->
+			<a class="navbar-brand" href="home">
+				Administrator
+			</a>
+			<!-- END LOGO -->
+		</div>
+		
+		
+	</div>
+</div>
+<!-- MENU -->
+<div class="menu navbar-collapse collapse">
+	<ul class="nav navbar-nav">
+		<li ><a href="<?php echo $BASE; ?>">Beranda</a></li>        						
+		<li ><a id="0" href="javascript:void(0)" onclick="return false;" data-toggle="collapse" data-target=".menu-category" aria-expanded="false">Product & Category</a>
+			<button class="btn btn-primary" onclick="category('modal'); return false;"><span class="glyphicon glyphicon-edit"></span></button>
+		<ul class="menu-category nav collapse" role="menu" aria-labelledby="btn-1">
+		<?php				
+			mysqli_data_seek($parent_category, 0);	
+			while($row = mysqli_fetch_array($parent_category, MYSQLI_ASSOC)){
+		?>				
+		<li><a id="<?php echo $row["id_category"]; ?>" href="<?php echo $BASE; ?>/category/<?php echo $row["category_link"]; ?>" onclick="return false;" data-toggle="collapse" data-target=".sub-<?php echo $row["id_category"]; ?>" aria-expanded="false"><?php echo $row["name"]; ?></a>
+				<button class="btn btn-primary" onclick="category('modal', <?php echo str_replace('"',"'", json_encode($row)); ?>); return false;"><span class="glyphicon glyphicon-edit"></span></button>
+			<ul class="sub-<?php echo $row["id_category"]; ?> nav collapse" role="menu" aria-labelledby="btn-1">
+			<?php
+				$id = $row["id_category"];
+				while($row2 = mysqli_fetch_array($child_category, MYSQLI_ASSOC)){
+					$parent = $row2["parent_category"];
+					if($id == $parent){
+			?>
+					<li><a id="<?php echo $row2["id_category"]; ?>" href="<?php echo $BASE; ?>/category/<?php echo $row["category_link"]; ?>/<?php echo $row2["category_link"]; ?>"><?php echo $row2["name"]; ?></a>
+						<button class="btn btn-primary" onclick="category('modal', <?php echo str_replace('"',"'", json_encode($row2)); ?>); return false;"><span class="glyphicon glyphicon-edit"></button>
+					</li>
+			<?php
+					}
+				}
+				mysqli_data_seek($child_category, 0);
+			?>
+			</ul>
+		</li>
+		<?php
+			}
+		?>
+		</ul>
+		</li>
+		<li ><a href="<?php echo $BASE; ?>/testimonial">Testimonial</a></li>        
+		<li ><a href="<?php echo $BASE; ?>/faq">FAQs</a></li>        
+		<li ><a href="<?php echo $BASE; ?>/tentang">Tentang Kami</a></li>        
+		<li ><a href="#login">Logout</a></li>        
+	</ul>                           
+</div>
+<!-- END MENU -->

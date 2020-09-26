@@ -1,0 +1,38 @@
+
+<?php 
+	$query = ""; $withSlider = false; $title = "";
+	if(isset($URI[0])){
+		if($URI[0] == "category"){
+			if(isset($URI[2])){
+				$query = "select * from product where id_category in 
+					(select id_category from category where category_link = '".$URI[2]."') 
+					order by date_saved desc limit 0, 20"; 
+				
+				$title = strtoupper(str_replace("-"," ",$URI[1])) . "&nbsp;&nbsp;>&nbsp;&nbsp;" . strtoupper(str_replace("-"," ",$URI[2]));
+			}
+			else if(isset($URI[1])){
+				$query = "select * from product where id_category in 
+					(select id_category from category where parent_category = (select id_category from category where category_link = '".$URI[1]."')) 
+					order by date_saved desc limit 0, 20"; 
+					
+				$title = strtoupper(str_replace("-"," ",$URI[1]));
+			}
+		}
+	}
+	else{
+		$query = "select * from product order by date_saved desc limit 0, 3";
+		$withSlider = true; $title = "Latest Products";
+	}
+	
+	$product = mysqli_query($con, $query); 
+?>
+
+<?php if($withSlider){include 'slider.html';} ?>
+
+<div class="navbar navbar-default" style="background:none; border:none">
+	<div class="container">
+		<?php if($withSlider){include 'list-product.html';} ?>
+	</div>
+</div>
+
+<?php include 'gallery.html'; ?>

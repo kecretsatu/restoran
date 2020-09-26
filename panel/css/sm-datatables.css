@@ -1,0 +1,111 @@
+
+.sm-datatables{
+	position:relative;
+	border-radius:2px;
+}
+
+.sm-datatables .sm-table-header {
+	padding-top:10px; padding-bottom:10px;
+	border:1px solid #ccc;
+	border-bottom:none;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background:#fff;
+}
+.sm-datatables .sm-table-header label, 
+.sm-datatables .sm-table-header select,
+.sm-datatables .sm-table-header input{
+	font-weight:normal;
+	font-size:0.9em;
+	padding:5px;
+	outline:0;
+}
+.sm-datatables .sm-table-header select,
+.sm-datatables .sm-table-header input{
+	border:1px solid #ccc;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+.sm-datatables .sm-table-header .btn{
+	margin-right:5px;
+	min-width:100px !important;
+}
+
+.sm-datatables .sm-table-body .table{
+	margin:0px;
+}
+.sm-datatables .sm-table-body td.action{
+	padding:0px;
+}
+.sm-datatables .sm-table-body td.action .btn{
+	margin:2px;
+	width:30px; height:30px;	
+	padding:3px;
+}
+
+
+.sm-datatables .sm-table-footer{	
+	margin:0px;
+	padding:10px;
+	border:1px solid #ccc;
+	border-top:none;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background:#fff;
+}
+.sm-datatables .sm-table-footer ul{
+	padding:0px; margin:0px;
+	list-style:none;
+}
+.sm-datatables .sm-table-footer ul li{
+	display:inline-block;
+	border: 1px solid #ccc;
+	border-right:none;
+}
+.sm-datatables .sm-table-footer ul li:first-child{
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.sm-datatables .sm-table-footer ul li:last-child{
+	border-right: 1px solid #ccc;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.sm-datatables .sm-table-footer ul li a{
+	padding:5px;
+	width:30px; height:30px;
+	text-align:center;
+	display:block;
+	color:#222;
+}
+.sm-datatables .sm-table-footer ul li a.active{
+	background:#222;
+	color:#ccc;
+}
+
+
+
+
+
+
+
+
+
+

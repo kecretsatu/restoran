@@ -1,0 +1,55 @@
+
+<?php
+	$parent = 0; $url = 0;
+	if(isset($URI[2])){
+		$parent = $URI[1];
+		$url	= $URI[2];
+	}
+	else if(isset($URI[1])){
+		$parent = 0;
+		$url	= $URI[1];
+	}
+?>
+
+<div class="page-content table-responsive" style="">
+	<div id="this_table" class="sm-datatables" ><!--class="table table-bordered table-striped table-hover"-->
+		
+	</div>
+	
+	<form id="this_filter" style="display:none">
+		<input type="hidden" name="parent" value="<?php echo $parent; ?>" />
+		<input type="hidden" name="url" value="<?php echo $url; ?>" />
+	</form>
+</div>
+
+<script>
+	$(document).ready(function(){
+		dataview("product", 0, this_callback, '#this_filter');
+	});
+	
+	var this_data;
+	function this_callback(data){
+		this_data = data;
+		$('#this_table').smDataTables(data, ["id", "id_category", "price_old", "image1", "image2", "image3", "image4", "description", "product_link", "user_saved", "date_saved", "removed"]
+							,[{btn: "edit", icon: "edit", class: "btn-primary", text: "", callback: "edit_product"}
+							,{btn: "gallery", icon: "th-list", class: "btn-warning", text: "", callback: "load_image_product"}]
+							, null
+							,[{btn: "add", icon: "plus", class: "btn-success", text: "&nbsp;Add Product", callback: "add_product"}]);
+		waitingDialog.hide();	
+	}
+	
+	function add_product(){
+		$('#form-product form input[name=id_category]').val('<?php echo $url; ?>');
+		product("modal", null);
+	}
+	
+	function edit_product(n){
+		$('#form-product form input[name=id_category]').val('<?php echo $url; ?>');
+		product("modal", this_data[n]);
+	}
+	
+	function load_image_product(n){
+		gallery("product", this_data[n]);
+	}
+	
+</script>

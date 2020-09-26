@@ -1,0 +1,68 @@
+
+<div class="header navbar navbar-default navbar-static-top navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+			<button class="navbar-toggle btn navbar-btn pull-left" data-toggle="collapse" data-target=".menu" style="margin-left:10px; margin-right:-10px;">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<button class="navbar-toggle btn navbar-btn" data-toggle="collapse" data-target="#category">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!-- END RESPONSIVE MENU TOGGLER -->
+			<!-- BEGIN LOGO (you can use logo image instead of text)-->
+			<a class="navbar-brand logo-v1" href="home">
+				<img src="<?php echo $BASE; ?>/images/logo.png" id="logo" alt="" />
+			</a>
+			<!-- END LOGO -->
+		</div>
+		
+		<!-- MENU -->
+		<div class="menu navbar-collapse collapse navbar-right">
+			<ul class="nav navbar-nav">
+				<li ><a href="<?php echo $BASE; ?>">Beranda</a></li>        						
+				<li ><a href="<?php echo $BASE; ?>/best-seller">Promo</a></li>        
+				<li ><a href="<?php echo $BASE; ?>/best-seller">Gallery</a></li>        
+				<li ><a href="<?php echo $BASE; ?>/testimonial">Testimonial</a></li>        
+				<li ><a href="<?php echo $BASE; ?>/faq">FAQs</a></li>        
+				<li ><a href="<?php echo $BASE; ?>/tentang-kami">Tentang Kami</a></li>        
+				<li class="mobile-only"><a href="#cart">Cart</a></li>        
+				<li class="mobile-only"><a href="#login">Login</a></li>        
+			</ul>                           
+		</div>
+		<!-- END MENU -->
+		
+		<!-- MENU -->
+		<div id="category" class="navbar-collapse collapse navbar-right">			
+			<ul class="nav  navbar-nav">
+				<?php					
+					while($row = mysqli_fetch_array($parent_category, MYSQLI_ASSOC)){
+				?>				
+				<li><a href="<?php echo $BASE; ?>/category/<?php echo $row["category_link"]; ?>" onclick="return false;" data-toggle="collapse" data-target=".sub-<?php echo $row["category_link"]; ?>" aria-expanded="false"><?php echo $row["name"]; ?></a>
+					<ul class="sub-<?php echo $row["category_link"]; ?> nav collapse" role="menu" aria-labelledby="btn-1">
+					<?php
+						$id = $row["id_category"];
+						while($row2 = mysqli_fetch_array($child_category, MYSQLI_ASSOC)){
+							$parent = $row2["parent_category"];
+							if($id == $parent){
+					?>
+							<li><a href="<?php echo $BASE; ?>/category/<?php echo $row["category_link"]; ?>/<?php echo $row2["category_link"]; ?>"><?php echo $row2["name"]; ?></a></li>
+					<?php
+							}
+						}
+						mysqli_data_seek($child_category, 0);
+					?>
+					</ul>
+				</li>
+				<?php
+					}
+				?>
+			</ul>       
+		</div>
+		<!-- END MENU -->
+	</div>
+</div>

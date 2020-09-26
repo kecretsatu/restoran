@@ -1,0 +1,18 @@
+
+
+<div class="navbar navbar-default" style="background:#3f3e4f; border:none; padding-bottom:50px; margin:0px; border-radius:0px;">
+	<div class="container">
+		<div class="testimonial" align="center">
+			<h1>TESTI</h1>
+			<?php for($i = 1; $i <= 4; $i++){ 
+					$file_path	= "images/gallery/small/" . $i . ".png";
+					$url_path	= $BASE . "/" . $file_path;
+					
+					if(file_exists($file_path)){
+							echo '<a href="#" style="background-image:url('.$url_path.')"></a>';
+					} 
+				}
+			?>
+		</div>
+	</div>
+</div>

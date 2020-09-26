@@ -1,0 +1,28 @@
+<?php
+$business_name = execqueryreturn("profile", "select * from profile where tipe = 'business_name'");
+?>
+<div class="footer navbar ">
+<div class="container">
+	<div class="col-md-12">
+		<div class="col-md-4">
+			<!--<h4>Profile</h4>-->
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h3>BUSSINESS NAME</h3>
+					<p>Jalan BUSSINESS NAME Alamat No 01</p>
+					<p>City</p>
+					<p>081-23456789</p>
+					<p>082-987654321</p>
+					<p>mail@bussiness_name.com</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h4>Find Us</h4>
+			<a href="https://www.facebook.com/jhr.falconryequipments"><img src="<?php echo $BASE; ?>/images/fb.png" style="width:25px" /><span>&nbsp;&nbsp;Facebook</span></a>
+			<a href="https://www.facebook.com/jhr.falconryequipments"><img src="<?php echo $BASE; ?>/images/instagram.png" style="width:25px" /><span>&nbsp;&nbsp;Instagram</span></a>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>

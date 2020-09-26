@@ -1,0 +1,51 @@
+
+
+<div class="list-product">
+<?php					
+	while($row = mysqli_fetch_array($product, MYSQLI_ASSOC)){
+?>	
+	<a href="<?php echo $BASE; ?>/product/<?php echo $row["product_link"]; ?>">
+	<div class="tag">&nbsp;</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="slider" >
+				<?php for($i = 1; $i <= 4; $i++){ 
+						$file_path	= "images/product/small/" . str_replace("-","",$row["id"]) . $i . ".png";
+						$url_path	= $BASE . "/" . $file_path;
+						
+						if(file_exists($file_path)){
+				?>
+						<div style="background-image:url(<?php echo $url_path; ?>)" ></div>
+				<?php	}
+					  } 
+				?>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<span class="p_name"><?php echo $row["name"]; ?></span>
+			<span class="p_short_desc"><?php echo $row["about"]; ?></span>
+		</div>
+	</div></a>
+<?php } ?>
+</div>
+
+
+
+<script>
+$(document).ready(function(e){
+	var slider_index = 0;
+	$('.list-product .slider').each(function(i){
+		slider_index++;
+		$(this).attr('id', 'sm-slider-'+slider_index);
+		initSmSlider('#'+'sm-slider-'+slider_index, {
+			mode: 'toggle',
+			interval: 7000,
+			speed: 1000,
+			start: 200 * slider_index
+		});
+	});
+});
+</script>
+
+
+

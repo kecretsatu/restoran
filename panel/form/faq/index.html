@@ -1,0 +1,49 @@
+<?php 
+	$faq = execqueryreturn("profile", "select content from profile where tipe = 'faqs'");
+	
+?>
+<h1 class="page-header">FAQs</h1>
+<div class="page-content table-responsive">
+<form id="this_form" role="form">
+	<input type="hidden" name="name" value="tentang" />
+	
+	<br/>
+	<div id="faq" style="margin-top:2px; width:600px; height:200px"><?php echo $faq; ?></div>
+	<textarea class="form-control input-sm" style="margin-top:2px; width:600px; height:50px; display:none" name="faq" ></textarea>
+	<br/>
+	<button onclick="$('textarea[name=faq]').val($('#faq').summernote('code')) ;  datasavecallback('#this_form', form_callback)" class="btn btn-success btn-sm">Simpan</button>
+</div>
+
+
+<script>
+	$(document).ready(function(){
+		$('#faq').summernote({
+			height: 250
+		});
+		
+		$('form').submit(function(e){
+			e.preventDefault();
+		});
+	});
+	
+	function form_callback(data){
+		if(data[0].status == 1){
+			alert('Data berhasil disimpan');
+		}
+	}
+	
+</script>
+
+<style>
+	.table tbody button{
+		margin-right:5px;
+		width:60px;
+	}
+	#this_form label{
+		min-width:80px;
+		text-align:right;
+	}
+	#this_form input[type=text], #this_form input[type=email], #this_form input[type=number]{
+		min-width:200px;
+	}
+</style>

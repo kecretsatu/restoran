@@ -1,0 +1,37 @@
+<!--<h1 class="page-header">Product<button onclick="show_form('')" class="btn btn-success  btn-sm pull-right">Tambah Data</button></h1>-->
+<div class="page-content table-responsive" style="">
+	<div id="this_table" class="sm-datatables" ><!--class="table table-bordered table-striped table-hover"-->
+		
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		dataview("testi", 0, this_callback, null);
+	});
+	
+	var this_data;
+	function this_callback(data){
+		this_data = data;
+		
+		$('#this_table').smDataTables(data, ["id", "user_saved", "date_saved", "removed"]
+							,[{btn: "edit", icon: "edit", class: "btn-primary", text: "", callback: "edit_testi"}
+							,{btn: "gallery", icon: "th-list", class: "btn-warning", text: "", callback: "load_image_testi"}]
+							, null
+							,[{btn: "add", icon: "plus", class: "btn-success", text: "&nbsp;Add", callback: "add_testi"}]);
+		waitingDialog.hide();	
+	}
+	
+	function add_testi(){
+		testimonial("modal", null);
+	}
+	
+	function edit_testi(n){
+		testimonial("modal", this_data[n]);
+	}
+	
+	function load_image_testi(n){
+		gallery("testimonial", this_data[n]);
+	}
+	
+</script>

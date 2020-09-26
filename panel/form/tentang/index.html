@@ -1,0 +1,72 @@
+<?php 
+	$address = execqueryreturn("profile", "select content from profile where tipe = 'address'");
+	$city = execqueryreturn("profile", "select content from profile where tipe = 'city'");
+	$telp1 = execqueryreturn("profile", "select content from profile where tipe = 'phone1'");
+	$telp2 = execqueryreturn("profile", "select content from profile where tipe = 'phone2'");
+	$email = execqueryreturn("profile", "select content from profile where tipe = 'email'");
+	$about_us = execqueryreturn("profile", "select content from profile where tipe = 'about_us'");
+	
+?>
+<h1 class="page-header">Profile</h1>
+<div class="page-content table-responsive">
+<form id="this_form" role="form">
+	<input type="hidden" name="name" value="tentang" />
+	
+	<br/>
+	<label>Address :</label>
+	<input type="text" name="email" value = "<?php echo $address; ?>" style="width:487px;" />
+	<label>City :</label>
+	<input type="text" name="email" value = "<?php echo $city; ?>" />
+	<br/>
+	
+	<label>Telp 1 :</label>
+	<input type="text" name="email" value = "<?php echo $telp1; ?>" />
+	<label>Telp 2 :</label>
+	<input type="text" name="email" value = "<?php echo $telp2; ?>" />
+	
+	<br/>
+	<label>Email :</label>
+	<input type="email" name="email" value = "<?php echo $email; ?>" />
+	<br/><br/>
+	<label>About Us :</label>
+	<div id="about_us" style="margin-top:2px; width:600px; height:200px"><?php echo $about_us; ?></div>
+	<textarea class="form-control input-sm" style="margin-top:2px; width:600px; height:50px; display:none" name="about_us" ></textarea>
+	
+	<button onclick="$('textarea[name=about_us]').val($('#about_us').summernote('code')) ;  datasavecallback('#this_form', form_callback)" class="btn btn-success btn-sm">Simpan</button>
+</div>
+
+
+<script>
+	$(document).ready(function(){
+		$('#about_us').summernote({
+			height: 250
+		});
+		
+		$('form').submit(function(e){
+			e.preventDefault();
+		});
+	});
+	
+	function form_callback(data){
+		if(data[0].status == 1){
+			alert('Data berhasil disimpan');
+		}
+	}
+	
+</script>
+
+<style>
+	.table tbody button{
+		margin-right:5px;
+		width:60px;
+	}
+	#this_form label{
+		min-width:80px;
+		text-align:right;
+	}
+	#this_form input[type=text], #this_form input[type=email], #this_form input[type=number]{
+		min-width:200px;
+		padding:5px;
+		margin-top:5px;
+	}
+</style>

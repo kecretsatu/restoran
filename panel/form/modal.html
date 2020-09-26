@@ -1,0 +1,182 @@
+
+<!-- Category -->
+	<div id="form-category" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Category</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<input type="hidden" name="POST" value="category" />
+						<input type="hidden" name="id" value="" />
+						<input type="hidden" name="tipe" value="" />
+						<fieldset>
+							<label class="label-form">Name:</label>
+							<div class="control-form">
+								<input type="text" name="name" value="" style="padding:3px;" />
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm" onclick="category('add')" ><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+					<button type="button" class="btn btn-primary btn-sm" onclick="category('edit')" ><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</button>
+					<button type="button" class="btn btn-danger btn-sm" onclick="category('remove')" ><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove</button>
+					<a href="#" class="btn btn-warning btn-sm pull-left" ><span class="glyphicon glyphicon-th-list"></span>&nbsp;Product</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End Category -->
+
+
+<!-- Product -->
+	<div id="form-product" class="modal fade" role="dialog">
+		<div class="modal-dialog" style="width:1000px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Product</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<input type="hidden" name="POST" value="product" />
+						<input type="hidden" name="id" value="" />
+						<input type="hidden" name="id_category" value="" />
+						<input type="hidden" name="tipe" value="" />
+						<fieldset>
+							<label class="label-form">Product Code:</label>
+							<div class="control-form">
+								<input type="text" name="product_code" placeholder="Product Code" value="" style="padding:3px;" />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">Name:</label>
+							<div class="control-form">
+								<input type="text" name="name" placeholder="Name" value="" style="padding:3px; width:80%" />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">Price Old:</label>
+							<div class="control-form">
+								<input type="number" name="price_old" placeholder="Price Old" value="" style="padding:3px;" />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">Price:</label>
+							<div class="control-form">
+								<input type="number" name="price" placeholder="Price" value="" style="padding:3px;" />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">Disc:</label>
+							<div class="control-form">
+								<input type="number" name="disc" placeholder="Disc" value="" style="padding:3px; width:20%" />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">Weight:</label>
+							<div class="control-form">
+								<input type="text" name="weight" placeholder="Weight" value="" style="padding:3px; width:20%" />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">About:</label>
+							<div class="control-form">
+								<input type="text" name="about" placeholder="About" value="" style="padding:3px; width:80%" />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">Description:</label>
+							<div class="control-form">
+								<div id="description" class="editor" style="margin-top:2px; width:1000px; height:200px"></div>
+								<textarea  name="description" placeholder="Description" style="padding:3px; "></textarea>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm" onclick="product('add');" ><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+					<button type="button" class="btn btn-primary btn-sm" onclick="product('edit');" ><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</button>
+					<button type="button" class="btn btn-danger btn-sm" onclick="return false;" ><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End Product -->
+
+<!-- Testimonial -->
+	<div id="form-testimonial" class="modal fade" role="dialog">
+		<div class="modal-dialog" style="width:1000px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Product</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<input type="hidden" name="POST" value="testimonial" />
+						<input type="hidden" name="id" value="" />
+						<input type="hidden" name="tipe" value="" />
+						<fieldset>
+							<label class="label-form">Name:</label>
+							<div class="control-form">
+								<input type="text" name="name" placeholder="Name" value="" style="padding:3px; " />
+							</div>
+						</fieldset>
+						<fieldset>
+							<label class="label-form">Content:</label>
+							<div class="control-form">
+								<input type="text" name="content" placeholder="Content" value="" style="padding:3px; width:80%" />
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm" onclick="testimonial('add');" ><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+					<button type="button" class="btn btn-primary btn-sm" onclick="testimonial('edit');" ><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</button>
+					<button type="button" class="btn btn-danger btn-sm" onclick="return false;" ><span class="glyphicon glyphicon-remove"></span>&nbsp;Remove</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End Testimonial -->
+
+<!-- Gallery -->
+	<div id="form-gallery" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Gallery</h4>
+				</div>
+				<div class="modal-body">
+					<form  enctype="multipart/form-data">
+						<input type="hidden" name="POST" value="gallery" />
+						<input type="hidden" name="id" value="" />
+						<input type="hidden" name="tipe" value="" />
+						<div align="center">
+							<ul>
+								<li><a href="javascript:void(0)" file="image1"><span>Change Image</span><img src="<?php echo str_replace("/panel","",$BASE); ?>/images/noimage.jpg" /></a></li>
+								<li><a href="javascript:void(0)" file="image2"><span>Change Image</span><img src="<?php echo str_replace("/panel","",$BASE); ?>/images/noimage.jpg" /></a></li>
+								<li><a href="javascript:void(0)" file="image3"><span>Change Image</span><img src="<?php echo str_replace("/panel","",$BASE); ?>/images/noimage.jpg" /></a></li>
+								<li><a href="javascript:void(0)" file="image4"><span>Change Image</span><img src="<?php echo str_replace("/panel","",$BASE); ?>/images/noimage.jpg" /></a></li>
+							</ul>
+						</div>
+						<div style="display:none">
+							<input type="file" id ="image1" name="image1"  />
+							<input type="file" id ="image2" name="image2"  />
+							<input type="file" id ="image3" name="image3"  />
+							<input type="file" id ="image4" name="image4"  />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm" onclick="$('#form-gallery form').submit();return false;" ><span class="glyphicon glyphicon-plus"></span>&nbsp;Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- End Gallery -->
